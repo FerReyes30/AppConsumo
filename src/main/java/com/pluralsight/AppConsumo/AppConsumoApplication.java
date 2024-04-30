@@ -25,7 +25,8 @@ public class AppConsumoApplication {
 		RestTemplate restTemplate = new RestTemplate();
 
 		//URL de endpoint
-		String url = "http://localhost:8080/vp/";
+		String urlVehiculos = "http://localhost:8080/vehiculos";
+		String urlPrestaciones = "http://localhost:8080/prestaciones";
 
 		System.out.println(" ");
 		System.out.println(" ");
@@ -58,13 +59,13 @@ public class AppConsumoApplication {
 				"Alta");
 
 		//Se realiza la peticion
-		Vehiculo responseAltaVehiculo1 = restTemplate.postForObject(url + "altaVehiculo", vehiculo, Vehiculo.class);
+		Vehiculo responseAltaVehiculo1 = restTemplate.postForObject(urlVehiculos, vehiculo, Vehiculo.class);
 		System.out.println("Vehiculo 1 registrado: " + responseAltaVehiculo1);
 		//Se realiza la peticion
-		Vehiculo responseAltaVehiculo2 = restTemplate.postForObject(url + "altaVehiculo", vehiculo2, Vehiculo.class);
+		Vehiculo responseAltaVehiculo2 = restTemplate.postForObject(urlVehiculos, vehiculo2, Vehiculo.class);
 		System.out.println("Vehiculo 2 registrado: " + responseAltaVehiculo2);
 		//Se realiza la peticion
-		Vehiculo responseAltaVehiculo3 = restTemplate.postForObject(url + "altaVehiculo", vehiculo3, Vehiculo.class);
+		Vehiculo responseAltaVehiculo3 = restTemplate.postForObject(urlVehiculos, vehiculo3, Vehiculo.class);
 		System.out.println("Vehiculo 3 registrado: " + responseAltaVehiculo3);
 
 		//Actualizacion de informacion del vehiculo
@@ -83,7 +84,7 @@ public class AppConsumoApplication {
 		HttpEntity<Vehiculo> requestBody = new HttpEntity<>(updateVehiculo, headers);
 
 		//Se realiza la peticion
-		ResponseEntity<Vehiculo> response = restTemplate.exchange(url + "actualizaInfoAuto/{id}", HttpMethod.PUT, requestBody, Vehiculo.class, idUpdate);
+		ResponseEntity<Vehiculo> response = restTemplate.exchange(urlVehiculos + "/{id}", HttpMethod.PUT, requestBody, Vehiculo.class, idUpdate);
 
 		Vehiculo vehiculoActualizadoRespuesta = response.getBody();
 
@@ -94,7 +95,7 @@ public class AppConsumoApplication {
 		System.out.println("------- Baja de vehiculos -------");
 		long idDelete = 3;
 		//Se realiza la peticion
-		ResponseEntity<String> responseDeleteVehiculo = restTemplate.exchange(url + "/bajaVehiculo/{id}", HttpMethod.DELETE, null, String.class, idDelete);
+		ResponseEntity<String> responseDeleteVehiculo = restTemplate.exchange(urlVehiculos + "/{id}", HttpMethod.DELETE, null, String.class, idDelete);
 
 		String mensajeRespuesta = responseDeleteVehiculo.getBody();
 
@@ -103,7 +104,7 @@ public class AppConsumoApplication {
 		//Consultas de vehiculos
 		System.out.println("------- Consulta de vehiculos -------");
 		ResponseEntity<List<Vehiculo>> responseConsultaVehiculos = restTemplate.exchange(
-				url + "vehiculos",
+				urlVehiculos,
 				HttpMethod.GET,
 				null,
 				new ParameterizedTypeReference<List<Vehiculo>>() {}
@@ -182,16 +183,16 @@ public class AppConsumoApplication {
 				vehiculoPrestacion4);
 
 		//Se realiza la peticion
-		Prestaciones responseAltaPrestacion1 = restTemplate.postForObject(url + "altaPrestacion", prestacion1, Prestaciones.class);
+		Prestaciones responseAltaPrestacion1 = restTemplate.postForObject(urlPrestaciones, prestacion1, Prestaciones.class);
 		System.out.println("Prestacion 1 registrada: " + responseAltaPrestacion1);
 		//Se realiza la peticion
-		Prestaciones responseAltaPrestacion2 = restTemplate.postForObject(url + "altaPrestacion", prestacion2, Prestaciones.class);
+		Prestaciones responseAltaPrestacion2 = restTemplate.postForObject(urlPrestaciones, prestacion2, Prestaciones.class);
 		System.out.println("Prestacion 2 registrado: " + responseAltaPrestacion2);
 		//Se realiza la peticion
-		Prestaciones responseAltaPrestacion3 = restTemplate.postForObject(url + "altaPrestacion", prestacion3, Prestaciones.class);
+		Prestaciones responseAltaPrestacion3 = restTemplate.postForObject(urlPrestaciones, prestacion3, Prestaciones.class);
 		System.out.println("Prestacion 3 registrado: " + responseAltaPrestacion3);
 		//Se realiza la peticion
-		Prestaciones responseAltaPrestacion4 = restTemplate.postForObject(url + "altaPrestacion", prestacion4, Prestaciones.class);
+		Prestaciones responseAltaPrestacion4 = restTemplate.postForObject(urlPrestaciones, prestacion4, Prestaciones.class);
 		System.out.println("Prestacion 4 registrado: " + responseAltaPrestacion4);
 
 		//Actualizacion de informacion del vehiculo
@@ -218,7 +219,7 @@ public class AppConsumoApplication {
 		HttpEntity<Prestaciones> requestBodyVP = new HttpEntity<>(prestacionVP, headersVP);
 
 		//Se realiza la peticion
-		ResponseEntity<Prestaciones> responseVP = restTemplate.exchange(url + "actualizaInfoPrestacion/{id}", HttpMethod.PUT, requestBodyVP, Prestaciones.class, idUpdatePrestacion);
+		ResponseEntity<Prestaciones> responseVP = restTemplate.exchange(urlPrestaciones + "/{id}", HttpMethod.PUT, requestBodyVP, Prestaciones.class, idUpdatePrestacion);
 
 		Prestaciones prestacionVehiculoUpdate = responseVP.getBody();
 
@@ -228,7 +229,7 @@ public class AppConsumoApplication {
 		System.out.println("------- Baja de prestaciones -------");
 		long idDeleteVP = 4;
 		//Se realiza la peticion
-		ResponseEntity<String> responseDeleteVP = restTemplate.exchange(url + "/bajaPrestacion/{id}", HttpMethod.DELETE, null, String.class, idDeleteVP);
+		ResponseEntity<String> responseDeleteVP = restTemplate.exchange(urlPrestaciones + "/{id}", HttpMethod.DELETE, null, String.class, idDeleteVP);
 
 		String mensajeRespuestaVP = responseDeleteVP.getBody();
 
@@ -237,7 +238,7 @@ public class AppConsumoApplication {
 		//Consultas de prestaciones
 		System.out.println("------- Consulta de prestaciones -------");
 		ResponseEntity<List<Prestaciones>> responseConsultaPrestaciones = restTemplate.exchange(
-				url + "prestaciones",
+				urlPrestaciones,
 				HttpMethod.GET,
 				null,
 				new ParameterizedTypeReference<List<Prestaciones>>() {}
@@ -256,7 +257,7 @@ public class AppConsumoApplication {
 		System.out.println("------- Consulta apartir de una patente identificatoria -------");
 		String patenteIdentificatoria = "728000";
 		ResponseEntity<List<Prestaciones>> responseConsultaPatenteIdentificatoria = restTemplate.exchange(
-				url + "vehiculoInfoPrestacion/{patenteIdentificadora}",
+				urlPrestaciones + "/vehiculoInfoPrestacion/{patenteIdentificadora}",
 				HttpMethod.GET,
 				null,
 				new ParameterizedTypeReference<List<Prestaciones>>() {},
@@ -272,7 +273,7 @@ public class AppConsumoApplication {
 		System.out.println("------- Consulta apartir de una fecha -------");
 		String fechaPrestacion = "2024-04-24";
 		ResponseEntity<List<Prestaciones>> responseConsultaFechaPrestacion = restTemplate.exchange(
-				url + "fechaAtendidos/{fecha}",
+				urlPrestaciones + "/fechaAtendidos/{fecha}",
 				HttpMethod.GET,
 				null,
 				new ParameterizedTypeReference<List<Prestaciones>>() {},
