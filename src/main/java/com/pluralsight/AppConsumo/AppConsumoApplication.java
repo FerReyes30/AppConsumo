@@ -34,7 +34,7 @@ public class AppConsumoApplication {
 		//Alta de vehiculo
 		//Vehiculo
 		System.out.println("------- Alta de vehiculos -------");
-		Vehiculo vehiculo = new Vehiculo( "321000",
+		Vehiculo vehiculo = new Vehiculo( "WED321",
 										  "123213554",
 										  "3546468",
 										  "Toyota",
@@ -42,7 +42,7 @@ public class AppConsumoApplication {
 										  "2024",
 										"Alta");
 
-		Vehiculo vehiculo2 = new Vehiculo( "728000",
+		Vehiculo vehiculo2 = new Vehiculo( "HYT728",
 				"46498484",
 				"789498",
 				"Nissan",
@@ -50,7 +50,7 @@ public class AppConsumoApplication {
 				"2024",
 				"Alta");
 
-		Vehiculo vehiculo3 = new Vehiculo( "963000",
+		Vehiculo vehiculo3 = new Vehiculo( "NBV963",
 				"14147175417",
 				"3785357537",
 				"Mazda",
@@ -70,7 +70,7 @@ public class AppConsumoApplication {
 
 		//Actualizacion de informacion del vehiculo
 		long idUpdate = 3;
-		Vehiculo updateVehiculo = new Vehiculo( "564000",
+		Vehiculo updateVehiculo = new Vehiculo( "NBV963",
 												"46498484",
 												"789498",
 												"Mazda",
@@ -120,7 +120,7 @@ public class AppConsumoApplication {
 		//Alta de prestaciones
 		System.out.println("------- Alta de prestaciones -------");
 		VehiculoPrestacion vehiculoPrestacion1 = new VehiculoPrestacion( 1,
-																		"321000",
+																		"WED321",
 																		"123213554",
 																		"3546468",
 																		"Toyota",
@@ -129,7 +129,7 @@ public class AppConsumoApplication {
 																		"Alta");
 
 		VehiculoPrestacion vehiculoPrestacion2 = new VehiculoPrestacion( 2,
-																		"728000",
+																		"HYT728",
 																		"46498484",
 																		"789498",
 																		"Nissan",
@@ -137,7 +137,7 @@ public class AppConsumoApplication {
 																		"2024",
 																		"Alta");
 		VehiculoPrestacion vehiculoPrestacion3 = new VehiculoPrestacion( 2,
-																		"728000",
+																		"HYT728",
 																		"46498484",
 																		"789498",
 																		"Nissan",
@@ -146,7 +146,7 @@ public class AppConsumoApplication {
 																		"Alta");
 
 		VehiculoPrestacion vehiculoPrestacion4 = new VehiculoPrestacion( 1,
-																		"321000",
+																		"NBV963",
 																		"123213554",
 																		"3546468",
 																		"Toyota",
@@ -198,7 +198,7 @@ public class AppConsumoApplication {
 		//Actualizacion de informacion del vehiculo
 		long idUpdatePrestacion = 4;
 		VehiculoPrestacion updateVehiculoPrestacion = new VehiculoPrestacion( 2,
-																			"728000",
+																			"HYT728",
 																			"46498484",
 																			"789498",
 																			"Nissan",
@@ -255,7 +255,7 @@ public class AppConsumoApplication {
 		System.out.println("------- Consultas -------");
 		//Consulta para patente identificatoria
 		System.out.println("------- Consulta apartir de una patente identificatoria -------");
-		String patenteIdentificatoria = "728000";
+		String patenteIdentificatoria = "HYT728";
 		ResponseEntity<List<Prestaciones>> responseConsultaPatenteIdentificatoria = restTemplate.exchange(
 				urlPrestaciones + "/vehiculoInfoPrestacion/{patenteIdentificadora}",
 				HttpMethod.GET,
